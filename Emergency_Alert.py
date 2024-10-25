@@ -19,6 +19,7 @@ def timestamp_ref(time):
 
     return jst_time
 
+# データを取得する為の関数
 async def receive_data():
     websocket_url = "wss://ws-api.wolfx.jp/jma_eew"
     async with websockets.connect(websocket_url) as websocket:
@@ -32,9 +33,12 @@ async def receive_data():
                 if time_flag:
                     timestamp = timestamp_ref(timestamp)
                     time_flag = False
+                # 定期的に疎通確認を行っているので、ハートビートが送られてくる
+                # ハートビートは不要なので、それ以外のメッセージをprintするように設定する。
+                if json_message["type"] != "heartbeat":
+                    print(f"Received message: {json_message}")
 
-
-                print(f"Received message: {json_message}")
+                #print(f"Received message: {json_message}")
             except websockets.exceptions.ConnectionClosed:
                 print("Connection closed")
                 break
