@@ -28,15 +28,26 @@ async def receive_data():
             try:
                 message = await websocket.recv()
                 json_message = json.loads(message)
-                timestamp = json_message["timestamp"]
-                
-                if time_flag:
-                    timestamp = timestamp_ref(timestamp)
-                    time_flag = False
                 # 定期的に疎通確認を行っているので、ハートビートが送られてくる
                 # ハートビートは不要なので、それ以外のメッセージをprintするように設定する。
                 if json_message["type"] != "heartbeat":
                     print(f"Received message: {json_message}")
+
+                else:
+                    timestamp = json_message["timestamp"]
+                    if time_flag:
+                        timestamp = timestamp_ref(timestamp)
+                        time_flag = False
+                    
+
+                #print(json_message)
+                #timestamp = json_message["timestamp"]
+                
+                #if time_flag:
+                #    timestamp = timestamp_ref(timestamp)
+                #    time_flag = False
+
+                
 
                 #print(f"Received message: {json_message}")
             except websockets.exceptions.ConnectionClosed:
