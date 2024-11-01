@@ -1,2 +1,4 @@
 /data_get.py
-/venv
+venv/*
+venv/Lib
+venv/Scripts

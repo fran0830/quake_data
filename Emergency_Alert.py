@@ -31,7 +31,7 @@ async def receive_data():
                 # 定期的に疎通確認を行っているので、ハートビートが送られてくる
                 # ハートビートは不要なので、それ以外のメッセージをprintするように設定する。
                 if json_message["type"] != "heartbeat":
-                    print(f"Received message: {json_message}")
+                    #print(f"Received message: {json_message}")
                     
                     data = json_message
                     type = data["type"]
