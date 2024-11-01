@@ -32,6 +32,68 @@ async def receive_data():
                 # ハートビートは不要なので、それ以外のメッセージをprintするように設定する。
                 if json_message["type"] != "heartbeat":
                     print(f"Received message: {json_message}")
+                    
+                    data = json_message
+                    type = data["type"]
+                    title = data["Title"]
+                    code_type = data["CodeType"]
+                    issue_source = data["Issue"]["Source"]
+                    issue_status = data["Issue"]["Status"]
+                    event_id = data["EventID"]
+                    serial = data["Serial"]
+                    announced_time = data["AnnouncedTime"]
+                    origin_time = data["OriginTime"]
+                    hypocenter = data["Hypocenter"]
+                    latitude = data["Latitude"]
+                    longitude = data["Longitude"]
+                    magunitude = data["Magunitude"]
+                    depth = data["Depth"]
+                    max_intensity = data["MaxIntensity"]
+                    accuracy_epicenter = data["Accuracy"]["Epicenter"]
+                    accuracy_depth = data["Accuracy"]["Depth"]
+                    accuracy_magnitude = data["Accuracy"]["Magnitude"]
+                    max_int_change_string = data["MaxIntChange"]["String"]
+                    max_int_change_reason = data["MaxIntChange"]["Reason"]
+                    warn_area = data["WarnArea"]
+                    is_sea = data["isSea"]
+                    is_training = data["isTraining"]
+                    is_assumption = data["isAssumption"]
+                    is_warn = data["isWarn"]
+                    is_final = data["isFinal"]
+                    is_cancel = data["isCancel"]
+                    original_text = data["OriginalText"]
+                    pond = data["Pond"]
+
+                    print(f"type: {type}")
+                    print(f"title: {title}")
+                    print(f"code_type: {code_type}")
+                    print(f"issue_source: {issue_source}")
+                    print(f"issue_status: {issue_status}")
+                    print(f"event_id: {event_id}")
+                    print(f"serial: {serial}")
+                    print(f"announced_time: {announced_time}")
+                    print(f"origin_time: {origin_time}")
+                    print(f"hypocenter: {hypocenter}")
+                    print(f"latitude: {latitude}")
+                    print(f"longitude: {longitude}")
+                    print(f"magunitude: {magunitude}")
+                    print(f"depth: {depth}")
+                    print(f"max_intensity: {max_intensity}")
+                    print(f"accuracy_epicenter: {accuracy_epicenter}")
+                    print(f"accuracy_depth: {accuracy_depth}")
+                    print(f"accuracy_magnitude: {accuracy_magnitude}")
+                    print(f"max_int_change_string: {max_int_change_string}")
+                    print(f"max_int_change_reason: {max_int_change_reason}")
+                    print(f"warn_area: {warn_area}")
+                    print(f"is_sea: {is_sea}")
+                    print(f"is_training: {is_training}")
+                    print(f"is_assumption: {is_assumption}")
+                    print(f"is_warn: {is_warn}")
+                    print(f"is_final: {is_final}")
+                    print(f"is_cancel: {is_cancel}")
+                    print(f"original_text: {original_text}")
+                    print(f"pond: {pond}")
+
 
                 else:
                     timestamp = json_message["timestamp"]
